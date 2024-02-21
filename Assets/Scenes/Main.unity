@@ -159,6 +159,7 @@ Transform:
   - {fileID: 1657724994}
   - {fileID: 1363224602}
   - {fileID: 1335550302}
+  - {fileID: 2038840498}
   m_Father: {fileID: 1873495117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &168020207
@@ -177,7 +178,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ebc05df6d6aaa824497e35da3190f7ab, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -33223,7 +33224,7 @@ Transform:
   m_GameObject: {fileID: 1873495116}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.65, y: 11.36, z: 0}
+  m_LocalPosition: {x: 10.57, y: 11.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33245,8 +33246,12 @@ MonoBehaviour:
   entityData: {fileID: 11400000, guid: d2577665edb9c0248ae6ff143e4f5c1f, type: 2}
   wallCheck: {fileID: 1363224602}
   ledgeCheck: {fileID: 1657724994}
+  playerCheck: {fileID: 2038840498}
   idleStateData: {fileID: 11400000, guid: 43021559320db3543825cb7077c76e66, type: 2}
   moveStateData: {fileID: 11400000, guid: 9e067b2de5af3bd4ebf4a2914a484cb4, type: 2}
+  playerDetectedStateData: {fileID: 11400000, guid: 4fa5074a7afebce4fb8f4c900785c1fe, type: 2}
+  chargeStateData: {fileID: 11400000, guid: f9943ddc91877554ca5b20fb360c7b0e, type: 2}
+  lookForPlayerStateData: {fileID: 11400000, guid: 22f5ce0196f0a354b94cf99137d6e33f, type: 2}
 --- !u!1 &1998468818
 GameObject:
   m_ObjectHideFlags: 0
@@ -33319,6 +33324,37 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1456117565}
+--- !u!1 &2038840497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2038840498}
+  m_Layer: 7
+  m_Name: PlayerCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2038840498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038840497}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06, y: -0.43, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 168020206}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &634449974119041852
 PrefabInstance:
   m_ObjectHideFlags: 0
