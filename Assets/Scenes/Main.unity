@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 168020207}
   - component: {fileID: 168020210}
   - component: {fileID: 168020209}
+  - component: {fileID: 168020211}
   m_Layer: 7
   m_Name: Alive
   m_TagString: Enemy
@@ -160,6 +161,7 @@ Transform:
   - {fileID: 1363224602}
   - {fileID: 1335550302}
   - {fileID: 2038840498}
+  - {fileID: 1926475886}
   m_Father: {fileID: 1873495117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &168020207
@@ -307,6 +309,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &168020211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168020205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4ef10a9f38a7b4bbed59f6d7367664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &502866024
 GameObject:
   m_ObjectHideFlags: 0
@@ -33252,6 +33266,39 @@ MonoBehaviour:
   playerDetectedStateData: {fileID: 11400000, guid: 4fa5074a7afebce4fb8f4c900785c1fe, type: 2}
   chargeStateData: {fileID: 11400000, guid: f9943ddc91877554ca5b20fb360c7b0e, type: 2}
   lookForPlayerStateData: {fileID: 11400000, guid: 22f5ce0196f0a354b94cf99137d6e33f, type: 2}
+  meleeAttackStateData: {fileID: 11400000, guid: 72f6969f3807e63499def370a6067301, type: 2}
+  meleeAttackPosition: {fileID: 1926475886}
+--- !u!1 &1926475885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1926475886}
+  m_Layer: 7
+  m_Name: MeleeAttackPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1926475886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926475885}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: -0.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 168020206}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1998468818
 GameObject:
   m_ObjectHideFlags: 0
