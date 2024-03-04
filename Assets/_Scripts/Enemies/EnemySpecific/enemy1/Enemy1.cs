@@ -10,6 +10,8 @@ public class Enemy1 : Entity
     public E1_ChargeState chargeState { get; private set; }
     public E1_LookForPlayerState lookForPlayerState { get; private set; }
     public E1_MeleeAttackState meleeAttackState { get; private set; }
+    public E1_StunState stunState { get; private set; }
+    public E1_DeadState deadState { get; private set; }
 
     [SerializeField] private D_IdleState idleStateData;
     [SerializeField] private D_MoveState moveStateData;
@@ -17,6 +19,8 @@ public class Enemy1 : Entity
     [SerializeField] private D_ChargeState chargeStateData;
     [SerializeField] private D_LookForPlayerState lookForPlayerStateData;
     [SerializeField] private D_MeleeAttack meleeAttackStateData;
+    [SerializeField] private D_StunState stunStateData;
+    [SerializeField] private D_DeadState deadStateData;
 
     
 
@@ -32,6 +36,8 @@ public class Enemy1 : Entity
         chargeState = new E1_ChargeState(this, statemachine, "charge", chargeStateData, this);
         lookForPlayerState = new E1_LookForPlayerState(this, statemachine, "lookForPlayer", lookForPlayerStateData, this);
         meleeAttackState = new E1_MeleeAttackState(this, statemachine, "meleeAttack",meleeAttackPosition, meleeAttackStateData, this);
+        stunState = new E1_StunState(this, statemachine, "stun", stunStateData, this);
+        deadState = new E1_DeadState(this, statemachine, "dead", deadStateData, this);
 
         statemachine.Initialize(moveState);
     }
@@ -42,4 +48,19 @@ public class Enemy1 : Entity
 
         Gizmos.DrawWireSphere(meleeAttackPosition.position, meleeAttackStateData.attackRadius);
     }
+
+    public override void Damage(AttackDetails attackdetails)
+    {
+        base.Damage(attackdetails);
+
+        if (isDead)
+        {
+            statemachine.ChangeState(deadState);
+        }
+        else if (isStunned && statemachine.currentState != stunState)
+        {
+            statemachine.ChangeState(stunState);
+        }
+    }
+    
 }

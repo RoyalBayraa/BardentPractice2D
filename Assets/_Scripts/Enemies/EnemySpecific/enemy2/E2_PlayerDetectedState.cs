@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E1_PlayerDetectedState : PlayerDetectedState
+public class E2_PlayerDetectedState : PlayerDetectedState
 {
-    private Enemy1 enemy;
-    public E1_PlayerDetectedState(Entity entity, FiniteStatemachine stateMachine, string animBoolName, D_PlayerDetected stateData, Enemy1 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    private Enemy2 enemy;
+    public E2_PlayerDetectedState(Entity entity, FiniteStatemachine stateMachine, string animBoolName, D_PlayerDetected stateData, Enemy2 enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
+    }
+
+    public override void DoChecks()
+    {
+        base.DoChecks();
     }
 
     public override void Enter()
@@ -28,18 +33,9 @@ public class E1_PlayerDetectedState : PlayerDetectedState
         {
             stateMachine.ChangeState(enemy.meleeAttackState);
         }
-        else if (performLongRangeAction)
-        {
-            stateMachine.ChangeState(enemy.chargeState);
-        }
         else if (!isPlayerInMaxAgroRange)
         {
             stateMachine.ChangeState(enemy.lookForPlayerState);
-        }
-        else if (!isDetectingLedge)
-        {
-            entity.Flip();
-            stateMachine.ChangeState(enemy.moveState);
         }
     }
 
