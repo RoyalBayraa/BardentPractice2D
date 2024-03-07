@@ -11,6 +11,7 @@ public class Enemy2 : Entity
     public E2_LookForPlayerState lookForPlayerState { get; private set; }
     public E2_StunState stunState { get; private set; }
     public E2_DeadState deadState { get; private set; }
+    public E2_DodgeState dodgeState { get; private set; }
 
 
     [SerializeField]
@@ -29,6 +30,9 @@ public class Enemy2 : Entity
     private D_DeadState deadStateData;
 
 
+    public D_DodgeState dodgeStateData;
+
+
     [SerializeField]
     private Transform meleeAttackPosition;
     public override void Start()
@@ -42,6 +46,7 @@ public class Enemy2 : Entity
         lookForPlayerState = new E2_LookForPlayerState(this, statemachine, "lookForPlayer", lookForPlayerStateData,  this);
         stunState = new E2_StunState(this, statemachine, "stun", stunStateData,  this);
         deadState = new E2_DeadState(this, statemachine, "dead", deadStateData, this);
+        dodgeState = new E2_DodgeState(this, statemachine, "dodge", dodgeStateData, this);
 
         statemachine.Initialize(moveState);
     }
