@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Enemy2 : Entity
@@ -12,6 +13,7 @@ public class Enemy2 : Entity
     public E2_StunState stunState { get; private set; }
     public E2_DeadState deadState { get; private set; }
     public E2_DodgeState dodgeState { get; private set; }
+    public E2_RangedAttackState rangedAttackState { get; private set; }
 
 
     [SerializeField]
@@ -28,6 +30,8 @@ public class Enemy2 : Entity
     private D_StunState stunStateData;
     [SerializeField]
     private D_DeadState deadStateData;
+    [SerializeField]
+    private D_RangedAttackState rangedAttackStateData;
 
 
     public D_DodgeState dodgeStateData;
@@ -35,6 +39,8 @@ public class Enemy2 : Entity
 
     [SerializeField]
     private Transform meleeAttackPosition;
+    [SerializeField]
+    private Transform rangedAttackPosition;
     public override void Start()
     {
         base.Start();
@@ -47,6 +53,7 @@ public class Enemy2 : Entity
         stunState = new E2_StunState(this, statemachine, "stun", stunStateData,  this);
         deadState = new E2_DeadState(this, statemachine, "dead", deadStateData, this);
         dodgeState = new E2_DodgeState(this, statemachine, "dodge", dodgeStateData, this);
+        rangedAttackState = new E2_RangedAttackState(this, statemachine, "rangedAttack", rangedAttackPosition, rangedAttackStateData,  this);
 
         statemachine.Initialize(moveState);
     }
@@ -62,6 +69,10 @@ public class Enemy2 : Entity
         else if (isStunned && statemachine.currentState != stunState)
         {
             statemachine.ChangeState(stunState);
+        }
+        else if (CheckPlayerInMaxAgroRange())
+        {
+            statemachine.ChangeState(rangedAttackState);
         }
         else if (!CheckPlayerInMinAgroRange())
         {
