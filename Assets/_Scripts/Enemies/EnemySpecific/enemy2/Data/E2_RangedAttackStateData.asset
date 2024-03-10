@@ -15,4 +15,4 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4417123790611762206, guid: 119d4944834e82b4b92a828bd9a38247, type: 3}
   projectileDamage: 10
   projectileSpeed: 12
-  projectileTravelDistance: 10
+  projectileTravelDistance: 8
