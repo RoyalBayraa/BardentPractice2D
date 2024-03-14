@@ -8,6 +8,7 @@ public class PlayerTouchingWallState : PlayerState
     protected bool isGrounded;
     protected bool isTouchingWall;
     protected bool grabInput;
+    protected bool jumpInput;
     protected int xInput;
     protected int yInput;
     public PlayerTouchingWallState(Player player, PlayerStateMahcine stateMahcine, PlayerData playerData, string animBoolName) : base(player, stateMahcine, playerData, animBoolName)
@@ -49,8 +50,15 @@ public class PlayerTouchingWallState : PlayerState
         xInput = player.InputHandler.NormalizedInputX;
         yInput = player.InputHandler.NormalizedInputY;
         grabInput = player.InputHandler.GrabInput;
+        jumpInput = player.InputHandler.JumpInput;
 
-        if (isGrounded && !grabInput)
+        if (jumpInput)
+        {
+         
+            player.WallJumpState.DetermineWAllJumpDirection(isTouchingWall);
+            stateMachine.ChangeState(player.WallJumpState);
+        }
+        else if (isGrounded && !grabInput)
         {
             stateMachine.ChangeState(player.IdleState);
         }
